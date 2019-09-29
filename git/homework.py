@@ -15,10 +15,7 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    if first == second:
-       return True
-    else:
-       return False
+    return first == second
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -26,10 +23,7 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    if type(first) == type(second):
-       return True
-    else:
-       return False
+    return type(first) == type(second)
 
 
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
@@ -37,7 +31,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    return True if first is second else False
+    return first is second
 
 
 
@@ -112,7 +106,7 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    return True if word in text else False
+    return word in text
 
 
 def some_loop_exercise() -> list:
@@ -132,7 +126,7 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    return [i for i in data if i > 0]
+    return [i for i in data if i >= 0]
 
 
 def alphabet() -> dict:
@@ -144,13 +138,7 @@ def alphabet() -> dict:
         >>> {"a": 1, "b": 2 ...}
     """
 
-    my_alphabet = "abcdefghijklmnopqrstuvwxyz"
-
-    my_dict = dict(enumerate(my_alphabet, start=1))
-
-    print(my_dict)
-
-    return my_dict
+    return dict(zip(range(1, 27), ascii_lowercase))
 
 
 def simple_sort(data: List[int]) -> List[list]:
