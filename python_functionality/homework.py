@@ -14,8 +14,8 @@ def task_1_fix_names_start_letter(data: DT) -> DT:
         fix_names_start_letters([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}])
         >>> [{'name': 'Alex', 'age': 26}, {'name': 'Denys', 'age': 89}]
     """
-    return [{i: (name.capitalize() if isinstance(name, str) else j) for (i, j) in dictionary.items()} for dictionary in
-            data]
+    return [{i: (name.capitalize() if isinstance(name, str) else name) for (i, name) in dictionary.items()}
+            for dictionary in data]
 
 
 def task_2_remove_dict_fields(data: DT, redundant_keys: List[str]) -> DT:
@@ -37,7 +37,7 @@ def task_3_find_item_via_value(data: DT, value) -> DT:
         >>> [{'name': 'Alex', 'age': 26}]
     """
     new_dict = {}
-    for i, j in DT.items():
+    for i, j in data.items():
         if i == value:
             new_pair[i] = j
             new_dict.append(new_pair)
@@ -75,7 +75,7 @@ def task_7_max_value_list_of_lists(data: List[List[int]]) -> int:
     """
     Find max value from list of lists
     """
-    for i in DT:
+    for i in data:
         i = max(List)
         clean_list.append(i)
 
@@ -86,7 +86,7 @@ def task_8_sum_of_ints(data: List[int]) -> int:
     """
     Find sum of all items in given list
     """
-    return sum(DT)
+    return sum(data)
 
 
 def task_9_sum_characters_positions(text: str) -> int:
