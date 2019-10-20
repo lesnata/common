@@ -14,7 +14,7 @@ def task_1_fix_names_start_letter(data: DT) -> DT:
         fix_names_start_letters([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}])
         >>> [{'name': 'Alex', 'age': 26}, {'name': 'Denys', 'age': 89}]
     """
-    return [{i: (name.capitalize() if isinstance(name, str) else name) for (i, name) in dictionary.items()}
+    return [{i: (name.capitalize() if dict.get(name) else name) for (i, name) in dictionary.items()}
             for dictionary in data]
 
 
@@ -36,13 +36,17 @@ def task_3_find_item_via_value(data: DT, value) -> DT:
         find_item_via_value([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}], 26)
         >>> [{'name': 'Alex', 'age': 26}]
     """
-    new_dict = {}
-    for i, j in data.items():
-        if i == value:
-            new_pair[i] = j
-            new_dict.append(new_pair)
-
-    return new_dict
+    # My function without list comprehension:
+    #
+    # new_dict = {}
+    # for i, j in data.items():
+    #     if i == value:
+    #         new_pair[i] = j
+    #         new_dict.append(new_pair)
+    #
+    # return new_dict
+    #
+    return {i:j for (i,j) in data.items() if i == value}
 
 
 def task_4_min_value_integers(data: List[int]) -> int:
@@ -75,11 +79,14 @@ def task_7_max_value_list_of_lists(data: List[List[int]]) -> int:
     """
     Find max value from list of lists
     """
-    for i in data:
-        i = max(List)
-        clean_list.append(i)
+    # My old function without list comprehension:
+    # for i in data:
+    #     i = max(List)
+    #     clean_list.append(i)
+    #
+    # return max(clean_list)
 
-    return max(clean_list)
+    return max([clean_list for default_list in data for clean_list in default_list])
 
 
 def task_8_sum_of_ints(data: List[int]) -> int:
