@@ -7,9 +7,9 @@ from homework import Rectangle
 
 class TestCases(unittest.TestCase):
 
-    def tested_values(self):
+    def setUp(self):
         self.test_Rectangle1 = Rectangle(2.5, 5)
-        self.test_Rectangle2 = Rectangle(2,)
+        self.test_Rectangle2 = Rectangle(2, None)
 
     def test_get_rectangle_perimeter_1_valid_values(self):
         self.assertEqual(self.test_Rectangle1.get_rectangle_perimeter(), 15)
@@ -49,18 +49,3 @@ class TestCases(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
