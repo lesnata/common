@@ -46,7 +46,7 @@ def task_3_find_item_via_value(data: DT, value) -> DT:
     #
     # return new_dict
     #
-    return {i:j for (i,j) in data.items() if i == value}
+    return [i for i in data if {val for val in i.values() if val == value}]
 
 
 def task_4_min_value_integers(data: List[int]) -> int:
