@@ -1,3 +1,5 @@
+from math import floor
+
 class Cat:
     """
     Write Class Cat which will receive age from user
@@ -79,10 +81,10 @@ class Cat:
         return f"Your cat ran {distance} kilometers"
 
     def get_saturation_level(self):
-        if self.saturation_level < 0:
-            return "Your cat is died :("
-        else:
+        if self.saturation_level > 0:
             return self.saturation_level
+        else:
+            return "Your cat is died :("
 
     def get_average_speed(self):
         return self.average_speed
@@ -118,7 +120,7 @@ class Wall:
     """
     * Implement class Wall which receives such parameters: width and height
 
-    * Implement method wall_square which return result of simple square formula of rectangle
+    * Implement method walls_square which return result of simple square formula of rectangle
 
     * Implement method number_of_rolls_of_wallpaper which receives such parameters: roll_width_m, roll_length_m
       (_m in the parameters name means meters) return number of rolls of wallpaper
@@ -133,11 +135,14 @@ class Wall:
         self.width = width
         self.height = height
 
-    def wall_square(self):
+    def walls_square(self):
         return self.width * self.height
 
     def number_of_rolls_of_wallpaper(self, roll_width_m, roll_length_m):
-        return self.wall_square() / (roll_width_m * roll_length_m)
+        try:
+            return self.walls_square() / (roll_width_m * roll_length_m)
+        except ValueError:
+            print('Please enter an integer')
 
 
 class Roof:
@@ -281,16 +286,16 @@ class House:
 
     """
 
-    def __init__(self, __walls, __windows, __roof,__door):
+    def __init__(self):
         self.__walls = []
         self.__windows = []
         self.__roof = None
         self.__door = None
 
     def create_wall(self, width, height):
-        if self.width == 0 or self.height == 0:
+        if width == 0 or height == 0:
             raise ValueError("Value must be not 0")
-        elif len(self.__walls) > 4:
+        elif len(self.__walls) > 3:
             raise ValueError("Our house can not have more than 4 walls")
         wall = Wall(width, height)
         self.__walls.append(wall)
@@ -304,10 +309,8 @@ class House:
         self.__roof = new_roof
 
     def create_window(self, width, height):
-        if width == 0 or height == 0:
-            raise ValueError("Value must be not 0")
-        if self.__door:
-            raise ValueError("The house can not have two doors")
+        if width <= 0 or height <= 0:
+            raise ValueError("Value must be not be 0 or less")
         new_window = Window(width, height)
         self.__windows.append(new_window)
 
@@ -349,7 +352,7 @@ class House:
     def get_number_of_rolls_of_wallpapers(self, roll_width_m, roll_length_m):
         if roll_width_m == 0 or roll_length_m == 0:
             raise ValueError("Sorry length must be not 0")
-        return sum(wall.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for wall in self.__walls)
+        return floor(sum(wall.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for wall in self.__walls))
 
     def get_room_square(self):
-        return self.get_walls_square() - self.get_windows_square() - self.get_door_square()
+        return self.get_walls_square() - (self.get_door_square() + self.get_windows_square())
