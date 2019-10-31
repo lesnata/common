@@ -1,4 +1,3 @@
-# import mock
 import builtins
 import pytest
 
@@ -14,7 +13,7 @@ class TestsHomework:
         expected_result = string[::-1]
         assert actual_result == expected_result
 
-    @pytest.mark.parametrize('num, result', [(63, '1:3'), (120, '2:0'), (58, '00:58')])
+    @pytest.mark.parametrize('num, result', [(63, '1:3'), (120, '2:0'), (58, '0:58')])
     def test_task11_time_converter(self, num, result):
         assert task11_time_converter(num) == result
 
@@ -22,11 +21,12 @@ class TestsHomework:
     def test_task12_largest_word(self, string, expected_output):
         assert task12_largest_word(string) == expected_output
 
-    def test_task13_backwards_string(self):
-        with mock.patch.object(builtins, 'input', lambda _: 'My name is Michele'):
-            assert task13_backwards_string() == 'Michele is name My'
+    @pytest.mark.parametrize('initial_input, result', [('My name is Michele', 'Michele is name My'),
+                                                       ('Hey Developer Hello', 'Hello Developer Hey')])
+    def test_task13_backwards_string(self, initial_input, result):
+        assert task13_backwards_string(initial_input) == result
 
-    @pytest.mark.parametrize('tested_use_input, expected_output', [(7, [1, 1, 2, 3, 5, 8, 13]), (4, [1, 1, 2, 3])])
+    @pytest.mark.parametrize('tested_user_input, expected_output', [(7, [1, 1, 2, 3, 5, 8, 13]), (4, [1, 1, 2, 3])])
     def test_task14_fibonacci_sequence(self, tested_user_input, expected_output):
         assert task14_fibonacci_sequence(tested_user_input) == expected_output
 
@@ -35,9 +35,9 @@ class TestsHomework:
     def test_task15_even_list(self, some_list, expected_output):
         assert task15_even_list(some_list) == expected_output
 
-    def test_task16_sum_all_numbers(self):
-        with mock.patch.object(builtins, 'input', lambda _: 4):
-            assert task16_sum_all_numbers() == 10
+    @pytest.mark.parametrize('some_input, result', [(4, 10), (5, 15)])
+    def test_task16_sum_all_numbers(self, some_input, result):
+        assert task16_sum_all_numbers(some_input) == result
 
     @pytest.mark.parametrize('num, result', [(4, 24), (10, 3628800)])
     def test_task17_factorial(self, num, result):
@@ -57,3 +57,4 @@ class TestsHomework:
     @pytest.mark.parametrize('num1, num2', [(13, 13), (-1, -1), (0, 0)])
     def task20_numbers_comparison(self, num1, num2):
         assert task20_numbers_comparison(num1, num2) == '-1'
+
