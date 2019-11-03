@@ -1,0 +1,12 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+    <ul>
+        <li>Name: {{ title }}</li>
+        <li>Text: {{ text }}</li>
+        <li>Image:  <img src="{{ url_for('static', filename=img) }}" ></li>
+        <li>Count of words: {{ count }}</li>
+    </ul>
+
+{% endblock %}
