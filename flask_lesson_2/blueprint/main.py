@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, render_template, request
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
 
-vegetable = Blueprint('vegetables', __name__, template_folder='template')
+vegetable = Blueprint('vegetables', __name__, template_folder='template_s')
 
 vegetables = {"veg1": "carrot",
               "veg2": 'tomato'}

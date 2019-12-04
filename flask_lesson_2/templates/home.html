@@ -1,0 +1,8 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <a href="{{ url_for("products.get_all_products") }}">Products</a><br>
+    <a href="{{ url_for("supermarkets.get_all_supermarkets") }}">Supermarkets</a>
+
+{% endblock %}

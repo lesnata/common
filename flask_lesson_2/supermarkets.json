@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "name": "Auchan",
+        "location": "kiev",
+        "img_name": "auchan.png"
+    },
+    {
+        "id": "2",
+        "name": "Silpo",
+        "location": "dnipro",
+        "img_name": "silpo.jpeg"
+    },
+    {
+        "id": "44453af8-fee8-41ef-a58f-d11d031cbad6",
+        "name": "7Eleven",
+        "location": "bali",
+        "img_name": "bali.png"
+    },
+    {
+        "id": "53454291-0dc4-4d96-8fdd-56084f4dd741",
+        "name": "Deluxe",
+        "location": "china",
+        "img_name": "bali.png"
+    }
+]

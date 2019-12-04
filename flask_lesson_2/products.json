@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1a",
+        "name": "Strawberry",
+        "description": "Sweet fresh stawberry on the wooden table",
+        "img_name": "1a.png",
+        "price": "28.59"
+    },
+    {
+        "id": "1b",
+        "name": "Lemon",
+        "description": "Lemons provide vitamin C, and they may offer a range of health benefits, such as managing blood pressure",
+        "img_name": "1b.png",
+        "price": "15.79"
+    },
+    {
+        "id": "1c",
+        "name": "Bread",
+        "description": "Homemade bread",
+        "img_name": "1c.png",
+        "price": "17.48"
+    },
+    {
+        "id": "1d",
+        "name": "Legumes",
+        "description": "Cooked legums on the wooden table",
+        "img_name": "1d.png",
+        "price": "14.77"
+    },
+    {
+        "id": "1e",
+        "name": "Caprese salad",
+        "description": "Homemade healthy caprese salad with tomato mozzarella and basil",
+        "img_name": "1e.jpg",
+        "price": "16.76"
+    },
+    {
+        "id": "e2cf6047-4027-4741-98fb-2ac24004829f",
+        "name": "Cucumber",
+        "description": "delicious cucumbers",
+        "img_name": "cucumber.jpeg",
+        "price": 3
+    }
+]

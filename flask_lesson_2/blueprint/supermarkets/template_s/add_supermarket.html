@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+    <h1>Add new supermarket:</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=75) }}
+        </p>
+        <p>
+            {{ form.location.label }}<br>
+            {{ form.location(size=75) }}
+            {% for error in form.location.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.image.label }}<br>
+            {{ form.image() }}
+            {% for error in form.image.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+
+{% endblock %}
