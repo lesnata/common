@@ -1,0 +1,20 @@
+[
+    {
+        "number": 11,
+        "level": 10,
+        "status": "Busy",
+        "price": 90
+    },
+    {
+        "number": 13,
+        "level": 90,
+        "status": "Free",
+        "price": 999
+    },
+    {
+        "number": 14,
+        "level": 10,
+        "status": "Busy",
+        "price": 90
+    }
+]

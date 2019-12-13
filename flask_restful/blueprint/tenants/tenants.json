@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Adelle Worstein",
+        "passport": 23245,
+        "age": 26,
+        "sex": "female",
+        "address": {
+            "city": "Madrid",
+            "street": "Lampasa street"
+        },
+        "room": 12
+    },
+    {
+        "name": "Bristol Schnaps",
+        "passport": 634763,
+        "age": 32,
+        "sex": "male",
+        "address": {
+            "city": "Oxford",
+            "street": "First street"
+        },
+        "room": 10999
+    },
+    {
+        "name": "Somebody",
+        "passport": 333363,
+        "age": 12,
+        "sex": "male",
+        "address": {
+            "city": null,
+            "street": null
+        },
+        "room": 10922
+    }
+]
