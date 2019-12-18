@@ -2,8 +2,8 @@ import json
 
 
 def get_data(filename):
-    with open(filename) as file:
-        return json.load(file)
+    with open(filename) as some_file:
+        return json.load(some_file)
 
 
 def add_data(data: str, path: str):

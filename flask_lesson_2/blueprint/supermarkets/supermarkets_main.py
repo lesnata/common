@@ -14,10 +14,10 @@ supermarkets = Blueprint('supermarkets', __name__,
 data = get_data("supermarkets.json")
 
 
-@supermarkets.route('/supermarket/<id>')
-def get_supermarket(id):
+@supermarkets.route('/supermarket/<s_id>')
+def get_supermarket(s_id):
     for s in data:
-        if s['id'] == id:
+        if s['id'] == s_id:
             return render_template('supermarket.html',
                                    name=s["name"],
                                    location=s["location"],
