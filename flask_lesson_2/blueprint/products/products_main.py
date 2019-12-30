@@ -1,8 +1,8 @@
 import os
 import uuid
 
-from flask import Blueprint, jsonify, render_template, request, redirect, url_for
-from utility import get_data, add_data
+from flask import Blueprint, jsonify, render_template, request, redirect, url_for, flash
+from utility import get_data, add_data, upload_image
 from blueprint.products.forms import AddProduct
 from werkzeug.utils import secure_filename
 
@@ -46,17 +46,16 @@ def get_all_products():
 def add_product():
     form = AddProduct()
     if form.validate_on_submit():
-        img_file = request.files['image']
-        path = os.path.join("blueprint/products/static_p", secure_filename(img_file.filename))
-        img_file.save(path)
         new_product = {
             "id": str(uuid.uuid4()),
             "name": form.name.data,
             "description": form.description.data,
-            "img_name": img_file.filename,
+            "img_name": upload_image(),
             "price": form.price.data
         }
         data.append(new_product)
         add_data(data, "products.json")
+        flash('Product added!', 'success')
         return redirect(url_for('products.get_all_products'))
     return render_template('add_product.html', form=form)
+

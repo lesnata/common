@@ -7,15 +7,15 @@
     {{ form.hidden_tag() }}
         <p>
             {{ form.name.label }}<br>
-            {{ form.name(size=75) }}
+            {{ form.name(placeholder='Type name', size=75) }}
         </p>
         <p>
             {{ form.description.label }}<br>
-            {{ form.description(size=75) }}
+            {{ form.description(placeholder='Type description', size=75) }}
         </p>
         <p>
             {{ form.price.label }}<br>
-            {{ form.price(size=75) }}
+            {{ form.price(placeholder='Only integers allowed', size=75) }}
             {% for error in form.price.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}

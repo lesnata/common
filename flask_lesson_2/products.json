@@ -40,5 +40,12 @@
         "description": "delicious cucumbers",
         "img_name": "cucumber.jpeg",
         "price": 3
+    },
+    {
+        "id": "2a67d7ca-342f-41ae-bea1-1227d9d94398",
+        "name": "Banana",
+        "description": "Sweet banana",
+        "img_name": "banana.jpg",
+        "price": 15.0
     }
 ]

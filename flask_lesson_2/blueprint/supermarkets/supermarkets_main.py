@@ -3,7 +3,7 @@ import uuid
 
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for
 from blueprint.supermarkets.forms import AddSupermarket
-from utility import get_data, add_data
+from utility import get_data, add_data, upload_image
 from werkzeug.utils import secure_filename
 
 supermarkets = Blueprint('supermarkets', __name__,

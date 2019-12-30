@@ -2,7 +2,7 @@
     {
         "id": "1",
         "name": "Auchan",
-        "location": "kyiv",
+        "location": "kiev",
         "img_name": "auchan.png"
     },
     {
@@ -22,5 +22,11 @@
         "name": "Deluxe",
         "location": "china",
         "img_name": "bali.png"
+    },
+    {
+        "id": "6126093d-0261-4819-8a31-e188071c3412",
+        "name": "Banana",
+        "location": "banana republic",
+        "img_name": "banana.jpg"
     }
 ]
