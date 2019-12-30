@@ -1,77 +1,64 @@
 import json
-from flask import Response
-from flask_restful import Resource, request, marshal_with, fields, reqparse
-from utility import get_data, add_data
-
-staff = get_data("blueprint/staff/staff.json")
+from flask_restful import Resource, request, marshal_with, fields, reqparse, current_app
+from models import Staff
+from db import db
 
 staff_structure = {
     "name": fields.String,
-    "passport": fields.Integer,
+    "passport": fields.String,
     "position": fields.String,
-    "salary": fields.Float}
-
-
-class Staff:
-    def __init__(self, name, passport, position, salary):
-        self.name = name
-        self.passport = passport
-        self.position = position
-        self.salary = salary
-
-    def make_dict(self):
-        return {"name": self.name,
-                "passport": self.passport,
-                "position": self.position,
-                "salary": self.salary,
-                }
-
+    "salary": fields.Integer}
 
 parser = reqparse.RequestParser(bundle_errors=True)
-parser.add_argument("passport", type=int, help="Custom error + default: {error_msg}")
+parser.add_argument("passport", type=str, help="Custom error + default: {error_msg}")
 
 
 class GetStaff(Resource):
     @marshal_with(staff_structure)
     def get(self):
-            args = parser.parse_args()
-            if args["passport"]:
-                for i in staff:
-                    if args["passport"] == i["passport"]:
-                        return i
-            else:
-                return staff
+        passport_no = parser.parse_args().get("passport")
+        if passport_no:
+            staff_employee = Staff.query.filter(
+                Staff.passport == passport_no).first()
+            return staff_employee, 200
+        return Staff.query.all(), 200
 
+    @marshal_with(staff_structure)
     def post(self):
         data = request.json
-        for person in staff:
-            if person.get("passport") == data["passport"]:
-                return Response("Person with passport #{} exists".format(data["passport"]), 200)
-            else:
-                new_stuff = Staff(data.get("name"), data.get("passport"),
-                                  data.get("position"), data.get("salary"))
-                staff.append(new_stuff.make_dict())
-                add_data(staff, "blueprint/staff/staff.json")
-                return Response("Person with passport #{} added".format(data.get("passport")), 200)
+        staff_employee = data.get("passport")
+        if Staff.query.filter(Staff.passport == staff_employee).first():
+            return current_app.logger.info("This employee exists"), 404
+        new_employee = Staff(**data)
+        try:
+            db.session.add(new_employee)
+            db.session.commit()
+        except ConnectionError:
+            return "Connection error", 404
+        return new_employee
 
-    def patch(self):
-        data = request.json
-        for person in staff:
-            if person.get("passport") == data["passport"]:
-                person.update(data)
-            add_data(staff, "blueprint/staff/staff.json")
-        return Response("Person with passport #{} updated".format(data.get("passport")), 200)
+    @marshal_with(staff_structure)
+    def put(self):
+        try:
+            data = request.json
+            staff_employee = data.get("passport")
+            staff = Staff.query.get(staff_employee)
+            for key, value in data.items():
+                setattr(staff, key, value)
+                db.session.commit()
+            return staff
+        except (ValueError, KeyError, TypeError) as error:
+            return f"Something went wrong when updated staff with following error - {error}"
 
     def delete(self):
-        args = parser.parse_args()
-        for person in range(len(staff)):
-            if args["passport"] == staff[person].get("passport"):
-                del staff[person]
-                break
-            else:
-                print("Sorry, no such staff found")
-        add_data(staff, "blueprint/staff/staff.json")
-        return Response("Person with passport #{} is successfully deleted".format(args["passport"]), 200)
-
-
+        passport_no = parser.parse_args().get("passport")
+        staff_employee = Staff.query.get(passport_no)
+        if staff_employee:
+            try:
+                db.session.delete(staff_employee)
+                db.session.commit()
+                return f"Staff employee with {passport_no} passport number is deleted", 200
+            except (ValueError, KeyError, TypeError) as error:
+                return f"You have an error: {error}"
+        return "No employee found", 404
 
