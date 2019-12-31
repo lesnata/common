@@ -9,11 +9,11 @@ def get_home_page():
     return render_template("home.html", data=get_data())
 
 
-@app.route('/object/<id>')
-def get_object(id):
-    img = id + ".jpg"
+@app.route('/object/<idnum>')
+def get_object(idnum):
+    img = idnum + ".jpg"
     for item in get_data():
-        if id == item['title'].replace(' ', "_").lower():
+        if idnum == item['title'].replace(' ', "_").lower():
             count = item['text'].count(" ")
             return render_template("object.html", title=item['title'], text=item['text'], count=count, img=img)
 
