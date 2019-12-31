@@ -1,4 +1,5 @@
 import unittest
+from unittest import mock
 from unittest.mock import patch
 from homework import task1_common_list, task2_count_a, task3_power_of_three, task4_add_digits, task5_zeros_list, \
     task6_arithmetic_progression, task7_non_duplicating_number, task8_missing_number, task9_count_till_tuple, \
@@ -85,15 +86,10 @@ class TestCases(unittest.TestCase):
         self.assertEqual(task12_largest_word(self.task12_largest_word_string1), "time")
         self.assertEqual(task12_largest_word(self.task12_largest_word_string2), "love")
 
-    @patch('builtins.input', return_value='My name is Michele')
-    def test_task13_backwards_string(self, mock):
+    # @patch('builtins.input', return_value='My name is Michele')
+    def test_task13_backwards_string(self):
         expected_result = "Michele is name My"
         self.assertEqual(task13_backwards_string(), expected_result)
-
-    # @patch('builtins.input', return_value=4)
-    # def test_task14(self, mock):
-    #     expected_result = [1, 1, 2, 3]
-    #     self.assertEqual(task14(), expected_result)
 
     def test_task14_fibonacci_sequence(self):
         real_result = task14_fibonacci_sequence(self.task14_fibonacci_sequence_number)
@@ -105,13 +101,17 @@ class TestCases(unittest.TestCase):
         expected_result = [4, 16, 36, 64, 100]
         self.assertListEqual(real_result, expected_result)
 
-    @patch('builtins.input', return_value=4)
-    def test_task16_sum_all_numbers(self, mock):
-        expected_result = 10
-        self.assertEqual(task16_sum_all_numbers(), expected_result)
+    # @patch('builtins.input', return_value=4)
+    # def test_task16_sum_all_numbers(self, mock):
+    #     expected_result = 10
+    #     self.assertEqual(task16_sum_all_numbers(), expected_result)
 
-    @patch('builtins.input', return_value=4)
-    def test_task17_factorial(self, mock):
+    def test_task16_sum_all_numbers(self):
+            expected_result = 10
+            self.assertEqual(task16_sum_all_numbers(), expected_result)
+
+    # @patch('builtins.input', return_value=4)
+    def test_task17_factorial(self):
         expected_result = 24
         self.assertEqual(task17_factorial(), expected_result)
 

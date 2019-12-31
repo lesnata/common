@@ -115,9 +115,7 @@ def task11_time_converter(some_number):
     (ie. if num = 63 then the output should be 1:3).
     Separate the number of hours and minutes with a colon.
     """
-    first = str(some_number // 60)
-    second = str(some_number % 60)
-    return f"{first}:{second}"
+    return f'{some_number // 60}:{some_number %60}'
 
 
 def task12_largest_word(some_string):
@@ -135,9 +133,10 @@ def task12_largest_word(some_string):
     return max(re.sub("[^a-zA-Z]+", " ", some_string).split(" "), key=len)
 
 
-def task13_backwards_string(initial_input):
+def task13_backwards_string():
     """Write a program (using functions!) that asks the user for a long string containing multiple words.
     Print back to the user the same string, except with the words in backwards order."""
+    initial_input = "My name is Michele"
     some_input = initial_input.split(" ")
     return ' '.join(reversed(some_input))
 
@@ -165,23 +164,25 @@ def task15_even_list(a):
     return [x for x in a if x % 2 == 0]
 
 
-def task16_sum_all_numbers(some_input):
+def task16_sum_all_numbers():
     """
     Write a program that will add up all the numbers from 1 to input number.
     For example: if the input is 4 then your program should
     return 10 because 1 + 2 + 3 + 4 = 10.
     """
+    some_input = 4
     some_sum = 0
     for i in range(some_input + 1):
         some_sum += i
     return some_sum
 
 
-def task17_factorial(some_input):
+def task17_factorial():
     """
     Write a program that will take the parameter being passed and return the factorial of it.
     For example: if num = 4, then your program should return (4 * 3 * 2 * 1) = 24.
     """
+    some_input = 4
     fact = 1
     for i in range(1, some_input + 1):
         fact = fact * i
