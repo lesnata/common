@@ -1,5 +1,6 @@
 from http import HTTPStatus
 
+from django.http import request
 from django.test import TestCase
 from django.test import Client
 
@@ -21,8 +22,4 @@ class StatusViewtests(TestCase):
     def test_good_reads_view(self):
         response = self.client.get(reverse("good_reads"))
         assert response.status_code == HTTPStatus.OK
-
-    def test_good_reads_type(self):
-        response = good_reads()
-        assert isinstance(response, dict)
 
