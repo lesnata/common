@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block first_row %}
+
+
+<h2>My Fruits list looks like:</h2>
+<ul>
+    {% for i in fruits_list %}
+
+    {% if i == 'Strawberry': %}
+    <li style="color:red">Strawberry</li>
+
+    {% else %}
+    <li>{{i}}</li>
+
+    {% endif %}
+
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
+{% block second_row %}
+
+
+
+
+
+{% endblock %}
+

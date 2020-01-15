@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block first_row %}
+    Welcome to the Home page. What are you seracjing for?<br>
+
+    <a href="{{ url_for('vegetables') }}" class="btn btn-outline-primary" style="margin-bottom: 20px; width: 200px">Vegetables List</a>
+    <br>
+    <a href="{{ url_for('fruits') }}" class="btn btn-outline-primary" style="margin-bottom: 20px; width: 200px">Fruits List</a>
+    <br>
+    Or search yourself your favourite ones: <br>
+     <a href="{{ url_for('page404') }}" class="btn btn-outline-primary" style="margin-bottom: 20px; width: 200px">Search</a>
+
+{% endblock %}
+
+{% block second_row %}
+
+    If your desired product is not in the list, please email us:
+
+    <form action="{{ url_for('page404') }}" method="post">
+        <input class="form-control" name="product_suggestion" style="margin: 20px 0px" placeholder="Type what you want us to store">
+        <button class="btn btn-primary" style="margin-bottom: 20px">Send</button>
+    </form>
+
+    <p>All fruits & vegetables available (and many more):</p>
+
+    {% for i in total_list %}
+        <ul>
+            <li>{{ i }}</li>
+        </ul>
+    {% endfor %}
+
+
+
+
+{% endblock %}
+
