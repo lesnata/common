@@ -3,7 +3,7 @@
 
 {% block content %}
     <h1>{{ name }}</h1>
-    <img src="{{ url_for('products.static', filename=img_name) }}">
+    <img src="{{ url_for('products.static', filename=img_name) }}" width="150em">
     <ul>
         <li>Description: {{ description }}</li>
         <li>Price: {{ price }}</li>

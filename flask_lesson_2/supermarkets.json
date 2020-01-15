@@ -28,5 +28,11 @@
         "name": "Banana",
         "location": "banana republic",
         "img_name": "banana.jpg"
+    },
+    {
+        "id": "c04ad707-6f25-43b5-b8d7-f8f43b7cc4a9",
+        "name": "Radish-Mall",
+        "location": "radomyshl",
+        "img_name": "product-5254_radish_white-500x500.jpeg"
     }
 ]

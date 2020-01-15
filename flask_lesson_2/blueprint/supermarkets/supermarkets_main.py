@@ -3,7 +3,7 @@ import uuid
 
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for
 from blueprint.supermarkets.forms import AddSupermarket
-from utility import get_data, add_data, upload_image
+from utility import get_data, add_data, upload_image_supermarket
 from werkzeug.utils import secure_filename
 
 supermarkets = Blueprint('supermarkets', __name__,
@@ -43,15 +43,11 @@ def get_all_supermarkets():
 def add_supermarket():
     form = AddSupermarket()
     if form.validate_on_submit():
-        img_file = request.files["image"]
-        path = os.path.join("blueprint/supermarkets/static_s", secure_filename(img_file.filename))
-        img_file.save(path)
-        location = form.location.data
         new_supermarket = {
             "id": str(uuid.uuid4()),
             "name": form.name.data,
-            "location": location.lower(),
-            "img_name": img_file.filename
+            "location": form.location.data.lower(),
+            "img_name": upload_image_supermarket()
         }
         data.append(new_supermarket)
         add_data(data, "supermarkets.json")

@@ -47,5 +47,12 @@
         "description": "Sweet banana",
         "img_name": "banana.jpg",
         "price": 15.0
+    },
+    {
+        "id": "badd4850-8e07-43af-99db-102359d16aa7",
+        "name": "Radish",
+        "description": "Beautiful Radish",
+        "img_name": "product-5254_radish_white-500x500.jpeg",
+        "price": 50.0
     }
 ]

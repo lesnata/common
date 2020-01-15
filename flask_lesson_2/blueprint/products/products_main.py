@@ -2,7 +2,7 @@ import os
 import uuid
 
 from flask import Blueprint, jsonify, render_template, request, redirect, url_for, flash
-from utility import get_data, add_data, upload_image
+from utility import get_data, add_data, upload_image_product
 from blueprint.products.forms import AddProduct
 from werkzeug.utils import secure_filename
 
@@ -50,7 +50,7 @@ def add_product():
             "id": str(uuid.uuid4()),
             "name": form.name.data,
             "description": form.description.data,
-            "img_name": upload_image(),
+            "img_name": upload_image_product(),
             "price": form.price.data
         }
         data.append(new_product)
