@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+    <h1>{{ name }}</h1>
+    <img src="{{ url_for('products.static', filename=img_name) }}" width="150em">
+    <ul>
+        <li>Description: {{ description }}</li>
+        <li>Price: {{ price }}</li>
+    </ul>
+
+    <p>Go back to <a href="{{ url_for('products.get_all_products')}}">All Products</a></p>
+
+{% endblock %}
